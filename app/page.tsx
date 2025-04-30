@@ -1,5 +1,6 @@
 import Hero from "@/components/hero";
 import Stack from "@/components/stack";
+import Scratch from "@/components/scratch";
 import SolarSystem from "@/components/solar-system";
 import { Metadata } from "next";
 
@@ -51,6 +52,7 @@ export default function Home() {
     <div className="flex flex-col items-center mt-8 max-w-3xl mx-auto">
       <Hero />
       <Stack />
+      <Scratch />
       {/* <SolarSystem /> */}
     </div>
   );

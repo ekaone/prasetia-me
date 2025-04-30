@@ -23,8 +23,7 @@ export default function Hero() {
         <div className="backdrop-blur-md border border-white/10 border-opacity-10 rounded-xl bg-opacity-50 p-8 flex items-center justify-center w-full h-full">
           <span className="text-amber-50 text-2xl text-center radio-canada">
             I constantly seek out new challenges and embrace the ever-evolving
-            tech landscape. Whether it&apos;s experimenting with the latest web
-            technologies
+            tech landscape. Experimenting with the latest web technologies
           </span>
         </div>
       </div>
