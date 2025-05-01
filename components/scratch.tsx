@@ -13,7 +13,7 @@ function Feature({
     <div className="flex items-center gap-2 text-white/90 text-base">
       {comingSoon ? (
         <div className="w-5 h-5 rounded-full bg-yellow-400 flex items-center justify-center">
-          <div className="w-2 h-2 rounded-full bg-white" />
+          <div className="w-2 h-2 rounded-full bg-red-800" />
         </div>
       ) : (
         <CheckCircle className="text-green-400 w-5 h-5" />
