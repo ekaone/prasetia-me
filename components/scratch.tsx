@@ -45,7 +45,7 @@ function GitHubButton({
 
 function TopCard() {
   return (
-    <div className="backdrop-blur-md bg-white/10 rounded-2xl shadow-lg p-8 border border-white/10 max-w-3xl w-full mx-auto flex flex-col gap-4 relative">
+    <div className="backdrop-blur-xs bg-white/10 rounded-2xl shadow-lg p-8 border border-white/10 max-w-3xl w-full mx-auto flex flex-col gap-4 relative">
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-white border border-white/20">
           <span>⚡</span>
@@ -89,20 +89,22 @@ function ServiceCard({
   title,
   desc,
   link,
+  code,
 }: {
   title: string;
   desc: string;
   link: string;
+  code: string;
 }) {
   return (
-    <div className="backdrop-blur-md bg-white/10 rounded-2xl shadow-lg p-8 border border-white/10 w-full flex flex-col gap-4 relative">
+    <div className="backdrop-blur-xs bg-white/10 rounded-2xl shadow-lg p-8 border border-white/10 w-full flex flex-col gap-4 relative">
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-white border border-white/20">
           <span>🖥️</span>
         </div>
         <span className="text-white font-bold text-lg flex-1">{title}</span>
         <Link
-          href="https://www.cognitia.space/"
+          href={link}
           target="_blank"
           rel="noopener noreferrer"
           className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-white/80 hover:bg-white/20 transition"
@@ -112,7 +114,7 @@ function ServiceCard({
       </div>
       <p className="text-white/70 mb-2">{desc}</p>
       <div className="flex justify-end">
-        <GitHubButton link={link}>GitHub</GitHubButton>
+        <GitHubButton link={code}>GitHub</GitHubButton>
       </div>
     </div>
   );
@@ -133,11 +135,13 @@ export default function Scratch() {
             title="Voice UI Navigation"
             desc="Voice assistant that can navigate the UI of schedule and requirements components"
             link="https://github.com/ekaone/ai-voice-ui-navigation"
+            code="https://github.com/ekaone/ai-voice-ui-navigation"
           />
           <ServiceCard
             title="The side Scrolling Game"
             desc="Bolty is a simple side-scrolling game"
-            link="https://github.com/ekaone/fly-with-bolty"
+            link="https://fly-with-bolty.netlify.app/"
+            code="https://github.com/ekaone/fly-with-bolty"
           />
         </div>
       </div>

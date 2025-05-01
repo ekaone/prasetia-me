@@ -1,13 +1,15 @@
 import Hero from "@/components/hero";
 import Stack from "@/components/stack";
 import Scratch from "@/components/scratch";
-import SolarSystem from "@/components/solar-system";
+// import SolarSystem from "@/components/solar-system";
 import { Metadata } from "next";
+import Blog from "@/components/blog";
+import Contact from "@/components/contact";
 
 // Function to generate a creative title using AI
 async function generateAITitle() {
-  // For now, we'll use a simple array of creative titles
-  // In a real implementation, you would call an AI API here
+  // A simple array of creative titles
+  // In a real implementation, can call an AI API here
   const creativeTitles = [
     "Digital Explorer",
     "Code & Creativity",
@@ -53,6 +55,8 @@ export default function Home() {
       <Hero />
       <Stack />
       <Scratch />
+      <Blog />
+      <Contact />
       {/* <SolarSystem /> */}
     </div>
   );
