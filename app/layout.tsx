@@ -42,7 +42,7 @@ export default function RootLayout({
       >
         {children}
         <Particles
-          className="fixed inset-0 top-0 left-0 w-full h-full z-0 pointer-events-none"
+          className="fixed inset-0 top-0 left-0 w-full h-full -z-[10] pointer-events-none"
           quantity={100}
           ease={80}
           color={color}

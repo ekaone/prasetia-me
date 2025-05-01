@@ -7,11 +7,11 @@ export default function Contact() {
   return (
     <div className="relative flex flex-col items-center w-full my-8 mt-[10rem] gap-8">
       {/* Background SCRATCH text */}
-      <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10rem] md:text-[11rem] font-extrabold text-white/10 radio-canada-big select-none z-0 tracking-tight pointer-events-none">
+      <span className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 text-[5rem] md:text-[11rem] font-extrabold text-white/10 radio-canada-big select-none z-0 tracking-tight pointer-events-none">
         CONTACT
       </span>
       {/* Icons */}
-      <div className="relative w-full flex flex-col items-start mt-[10rem]">
+      <div className="relative w-full flex flex-col md:items-end items-center mt-[5rem] md:mt-[10rem]">
         <div className="flex items-center gap-4">
           <Link
             href="https://twitter.com/twekaone"
@@ -33,7 +33,7 @@ export default function Contact() {
           </Link>
         </div>
         <div className="w-full my-4">
-          <Separator />
+          <Separator className="bg-white/10" />
         </div>
       </div>
     </div>
