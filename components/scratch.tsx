@@ -1,21 +1,45 @@
 import Image from "next/image";
-import { CheckCircle, ArrowRight } from "lucide-react";
+import { CheckCircle, Link as LinkIcon } from "lucide-react";
+import Link from "next/link";
 
-function Feature({ children }: { children: React.ReactNode }) {
+function Feature({
+  children,
+  comingSoon,
+}: {
+  children: React.ReactNode;
+  comingSoon?: boolean;
+}) {
   return (
     <div className="flex items-center gap-2 text-white/90 text-base">
-      <CheckCircle className="text-green-400 w-5 h-5" />
+      {comingSoon ? (
+        <div className="w-5 h-5 rounded-full bg-yellow-400 flex items-center justify-center">
+          <div className="w-2 h-2 rounded-full bg-white" />
+        </div>
+      ) : (
+        <CheckCircle className="text-green-400 w-5 h-5" />
+      )}
       <span>{children}</span>
     </div>
   );
 }
 
-function GitHubButton({ children }: { children: React.ReactNode }) {
+function GitHubButton({
+  children,
+  link,
+}: {
+  children: React.ReactNode;
+  link: string;
+}) {
   return (
-    <div className="bg-white/10 border border-white/20 rounded-xl px-5 py-2 text-white font-semibold text-base shadow-inner flex items-center gap-2">
+    <Link
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="bg-white/10 border border-white/20 rounded-xl px-5 py-2 text-white font-semibold text-base shadow-inner flex items-center gap-2"
+    >
       <Image src="/github.svg" alt="GitHub" width={20} height={20} />
       {children}
-    </div>
+    </Link>
   );
 }
 
@@ -26,29 +50,50 @@ function TopCard() {
         <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-white border border-white/20">
           <span>⚡</span>
         </div>
-        <span className="text-white font-bold text-xl flex-1">Experiments</span>
-        <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-white/80 hover:bg-white/20 transition">
-          <ArrowRight className="w-6 h-6" />
-        </button>
+        <span className="text-white font-bold text-xl flex-1">
+          Cognitia Platform
+        </span>
+        <Link
+          href="https://www.cognitia.space/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-white/80 hover:bg-white/20 transition"
+        >
+          <LinkIcon className="w-6 h-6" />
+        </Link>
       </div>
       <p className="text-white/70 mb-2">
-        I have a lot of experiments that I want to share with you, as follows:
+        I build a cognitive testing and mental wellness platform. Cognitia
+        offers a range of cognitive tests, including verbal fluency tasks, word
+        recall tests, and digit span tests. The platform leverages AI to analyze
+        user inputs and provide insights into cognitive performance.
       </p>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-2">
-        <Feature>Demetia early detection</Feature>
-        <Feature>Voice UI Navigation</Feature>
-        <Feature>Bible Quiz Game</Feature>
-        <Feature>Piano AI-learning</Feature>
-        <Feature>many more...</Feature>
+        <Feature>Word Recall Test</Feature>
+        <Feature>Verbal Fluency Tasks</Feature>
+        <Feature>Digit Span Test</Feature>
+        <Feature>Trail Making Test</Feature>
+        <Feature comingSoon>MMSE/MoCA</Feature>
+        <Feature comingSoon>Clock Drawing</Feature>
       </div>
       <div className="flex justify-end">
-        <GitHubButton>GitHub</GitHubButton>
+        <GitHubButton link="https://github.com/ekaone/cognitia">
+          GitHub
+        </GitHubButton>
       </div>
     </div>
   );
 }
 
-function ServiceCard({ title, desc }: { title: string; desc: string }) {
+function ServiceCard({
+  title,
+  desc,
+  link,
+}: {
+  title: string;
+  desc: string;
+  link: string;
+}) {
   return (
     <div className="backdrop-blur-md bg-white/10 rounded-2xl shadow-lg p-8 border border-white/10 w-full flex flex-col gap-4 relative">
       <div className="flex items-center gap-3 mb-2">
@@ -56,13 +101,18 @@ function ServiceCard({ title, desc }: { title: string; desc: string }) {
           <span>🖥️</span>
         </div>
         <span className="text-white font-bold text-lg flex-1">{title}</span>
-        <button className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-white/80 hover:bg-white/20 transition">
-          <ArrowRight className="w-5 h-5" />
-        </button>
+        <Link
+          href="https://www.cognitia.space/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-white/80 hover:bg-white/20 transition"
+        >
+          <LinkIcon className="w-5 h-5" />
+        </Link>
       </div>
       <p className="text-white/70 mb-2">{desc}</p>
       <div className="flex justify-end">
-        <GitHubButton>GitHub</GitHubButton>
+        <GitHubButton link={link}>GitHub</GitHubButton>
       </div>
     </div>
   );
@@ -80,12 +130,14 @@ export default function Scratch() {
         <TopCard />
         <div className="w-full max-w-3xl grid grid-cols-1 md:grid-cols-2 gap-6">
           <ServiceCard
-            title="Framer Landing Page"
-            desc="Interested in having us create completely unique landing page for you in Framer?"
+            title="Voice UI Navigation"
+            desc="Voice assistant that can navigate the UI of schedule and requirements components"
+            link="https://github.com/ekaone/ai-voice-ui-navigation"
           />
           <ServiceCard
-            title="Framer Website"
-            desc="Interested in having us create completely unique multi-page website for you in Framer?"
+            title="The side Scrolling Game"
+            desc="Bolty is a simple side-scrolling game"
+            link="https://github.com/ekaone/fly-with-bolty"
           />
         </div>
       </div>
