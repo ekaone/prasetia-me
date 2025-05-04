@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { BorderBeam } from "@/components/magicui/border-beam";
 import { useState } from "react";
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { cn } from "@/lib/utils";
 
 export default function Hero() {
   const [isHovered, setIsHovered] = useState(false);
@@ -31,18 +32,20 @@ export default function Hero() {
           <span className="text-2xl text-center radio-canada">
             I{" "}
             <span
-              className={`transition-colors duration-300 ${
+              className={cn(
+                "transition-colors duration-400",
                 isHovered ? "text-orange-500" : "text-amber-50"
-              }`}
+              )}
             >
               constantly
             </span>{" "}
             seek out new challenges and embrace the ever-evolving tech
             landscape.{" "}
             <span
-              className={`transition-colors duration-300 ${
+              className={cn(
+                "transition-colors duration-400",
                 isHovered ? "text-orange-500" : "text-amber-50"
-              }`}
+              )}
             >
               Experimenting
             </span>{" "}
