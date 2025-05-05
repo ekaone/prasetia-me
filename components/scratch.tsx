@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { CheckCircle, Link as LinkIcon } from "lucide-react";
 import Link from "next/link";
+import { MagicCard } from "@/components/magicui/magic-card";
 
 function Feature({
   children,
@@ -45,43 +46,45 @@ function GitHubButton({
 
 function TopCard() {
   return (
-    <div className="backdrop-blur-xs bg-white/10 rounded-2xl shadow-lg p-8 border border-white/10 max-w-3xl w-full mx-auto flex flex-col gap-4 relative">
-      <div className="flex items-center gap-3 mb-2">
-        <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-white border border-white/20">
-          <span>⚡</span>
+    <MagicCard>
+      <div className="backdrop-blur-xs bg-white/10 rounded-2xl shadow-lg p-8 border border-white/10 max-w-3xl w-full mx-auto flex flex-col gap-4 relative">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-2xl text-white border border-white/20">
+            <span>⚡</span>
+          </div>
+          <span className="text-white font-bold text-xl flex-1">
+            Cognitia Platform
+          </span>
+          <Link
+            href="https://www.cognitia.space/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-white/80 hover:bg-white/20 transition"
+          >
+            <LinkIcon className="w-6 h-6" />
+          </Link>
         </div>
-        <span className="text-white font-bold text-xl flex-1">
-          Cognitia Platform
-        </span>
-        <Link
-          href="https://www.cognitia.space/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center border border-white/20 text-white/80 hover:bg-white/20 transition"
-        >
-          <LinkIcon className="w-6 h-6" />
-        </Link>
+        <p className="text-white/70 mb-2">
+          I build a cognitive testing and mental wellness platform. Cognitia
+          offers a range of cognitive tests, including verbal fluency tasks,
+          word recall tests, and digit span tests. The platform leverages AI to
+          analyze user inputs and provide insights into cognitive performance.
+        </p>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-2">
+          <Feature>Word Recall Test</Feature>
+          <Feature>Verbal Fluency Tasks</Feature>
+          <Feature>Digit Span Test</Feature>
+          <Feature>Trail Making Test</Feature>
+          <Feature comingSoon>MMSE/MoCA</Feature>
+          <Feature comingSoon>Clock Drawing</Feature>
+        </div>
+        <div className="flex justify-end">
+          <GitHubButton link="https://github.com/ekaone/cognitia">
+            GitHub
+          </GitHubButton>
+        </div>
       </div>
-      <p className="text-white/70 mb-2">
-        I build a cognitive testing and mental wellness platform. Cognitia
-        offers a range of cognitive tests, including verbal fluency tasks, word
-        recall tests, and digit span tests. The platform leverages AI to analyze
-        user inputs and provide insights into cognitive performance.
-      </p>
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-2">
-        <Feature>Word Recall Test</Feature>
-        <Feature>Verbal Fluency Tasks</Feature>
-        <Feature>Digit Span Test</Feature>
-        <Feature>Trail Making Test</Feature>
-        <Feature comingSoon>MMSE/MoCA</Feature>
-        <Feature comingSoon>Clock Drawing</Feature>
-      </div>
-      <div className="flex justify-end">
-        <GitHubButton link="https://github.com/ekaone/cognitia">
-          GitHub
-        </GitHubButton>
-      </div>
-    </div>
+    </MagicCard>
   );
 }
 
