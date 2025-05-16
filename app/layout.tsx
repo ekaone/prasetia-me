@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import { Analytics } from "@vercel/analytics/next";
 import {
   Geist,
   Geist_Mono,
@@ -8,7 +6,6 @@ import {
   Radio_Canada_Big,
 } from "next/font/google";
 import "./globals.css";
-import { Particles } from "@/components/magicui/particles";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -34,20 +31,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [color] = useState<string>("#ffffff");
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${radioCanadaBig.variable} ${radioCanada.variable} antialiased min-h-screen p-4`}
       >
         {children}
-        <Particles
-          className="fixed inset-0 top-0 left-0 w-full h-full -z-[10] pointer-events-none"
-          quantity={100}
-          ease={80}
-          color={color}
-          refresh
-        />
+        <Analytics />
       </body>
     </html>
   );

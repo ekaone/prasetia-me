@@ -5,6 +5,7 @@ import Scratch from "@/components/scratch";
 import { Metadata } from "next";
 import Blog from "@/components/blog";
 import Contact from "@/components/contact";
+import { Particles } from "@/components/magicui/particles";
 
 // Function to generate a creative title using AI
 async function generateAITitle() {
@@ -57,6 +58,13 @@ export default function Home() {
       <Scratch />
       <Blog />
       <Contact />
+      <Particles
+        className="fixed inset-0 top-0 left-0 w-full h-full -z-[10] pointer-events-none"
+        quantity={100}
+        ease={80}
+        color="#ffffff"
+        refresh
+      />
       {/* <SolarSystem /> */}
     </div>
   );
