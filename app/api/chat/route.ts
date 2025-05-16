@@ -1,5 +1,13 @@
-import { openai } from "@ai-sdk/openai";
+import { v4 as uuidv4 } from "uuid";
+import { createOpenAI } from "@ai-sdk/openai";
 import { streamText } from "ai";
+
+const openai = createOpenAI({
+  baseURL: "https://oai.helicone.ai/v1",
+  headers: {
+    "Helicone-Auth": `Bearer ${process.env.HELICONE_API_KEY}`,
+  },
+});
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;
@@ -26,6 +34,12 @@ export async function POST(req: Request) {
 
   const result = streamText({
     model: openai("gpt-4-turbo"),
+    headers: {
+      "Helicone-User-Id": "user@public.com",
+      "Helicone-Session-Id": uuidv4(),
+      "Helicone-Session-Path": "/chat-contact",
+      "Helicone-Session-Name": "Chatbot",
+    },
     system: systemPrompt,
     messages,
   });
