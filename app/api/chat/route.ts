@@ -31,6 +31,8 @@ You are also open to work on any project that is related to web development, AI,
 
 export async function POST(req: Request) {
   const { messages } = await req.json();
+  const city = req.headers.get("x-vercel-ip-city");
+  const country = req.headers.get("x-vercel-ip-country");
 
   const result = streamText({
     model: openai("gpt-4-turbo"),
@@ -38,7 +40,7 @@ export async function POST(req: Request) {
       "Helicone-User-Id": "user@public.com",
       "Helicone-Session-Id": uuidv4(),
       "Helicone-Session-Path": "/chat-contact",
-      "Helicone-Session-Name": "Chatbot",
+      "Helicone-Session-Name": city + ", " + country || "unknown",
     },
     system: systemPrompt,
     messages,
