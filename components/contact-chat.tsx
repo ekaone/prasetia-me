@@ -47,6 +47,7 @@ export function ContactChat({
   };
 
   const { messages, input, handleInputChange, handleSubmit } = useChat({
+    api: "/api/chat-google",
     onFinish: async (message) => {
       console.log("Message:", message);
       setIsButtonVisible(false);
