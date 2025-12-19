@@ -3,7 +3,7 @@ import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { streamText } from "ai";
 
 const google = createGoogleGenerativeAI ({
-  apiKey: process.env.GOOGLE_API_KEY,
+  apiKey: process.env.GOOGLE_GENERATIVE_AI_API_KEY,
   baseURL: "https://gateway.helicone.ai/v1beta",
   headers: {
     "Helicone-Auth": `Bearer ${process.env.HELICONE_API_KEY}`,
