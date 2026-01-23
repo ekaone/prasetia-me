@@ -1,30 +1,31 @@
 import Image from "next/image";
 
+const STACKS = [
+  {
+    title: "JavaScript",
+    subtitle: "Language",
+    img: "/images/javascript.svg",
+  },
+  {
+    title: "TypeScript",
+    subtitle: "Language",
+    img: "/images/typescript.svg",
+  },
+  { title: "Node.js", subtitle: "Runtime", img: "/images/nodejs.svg" },
+  { title: "React", subtitle: "Library", img: "/images/react.svg" },
+  {
+    title: "PostgreSQL",
+    subtitle: "Database",
+    img: "/images/postgresql.svg",
+  },
+  { title: "Python", subtitle: "Language", img: "/images/python.svg" },
+];
+
 function StackCards() {
-  const stacks = [
-    {
-      title: "JavaScript",
-      subtitle: "Language",
-      img: "/images/javascript.svg",
-    },
-    {
-      title: "TypeScript",
-      subtitle: "Language",
-      img: "/images/typescript.svg",
-    },
-    { title: "Node.js", subtitle: "Runtime", img: "/images/nodejs.svg" },
-    { title: "React", subtitle: "Library", img: "/images/react.svg" },
-    {
-      title: "PostgreSQL",
-      subtitle: "Database",
-      img: "/images/postgresql.svg",
-    },
-    { title: "Python", subtitle: "Language", img: "/images/python.svg" },
-  ];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-3xl mx-auto mt-2">
-      {stacks.map((stack) => (
+      {STACKS.map((stack) => (
         <div
           key={stack.title}
           className="backdrop-blur-xs bg-white/10 rounded-2xl shadow-lg p-4 flex items-center gap-4 min-h-[90px] border border-white/10"

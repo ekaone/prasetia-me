@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, memo } from "react";
 import { useChat } from "@ai-sdk/react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -9,6 +9,44 @@ import { Mail } from "lucide-react";
 import Markdown from "@/components/render-markdown";
 
 import { cn } from "@/lib/utils";
+
+// Memoized message item component to prevent unnecessary re-renders
+const MessageItem = memo(function MessageItem({
+  message,
+}: {
+  message: { id?: string; role: string; content: string };
+}) {
+  return (
+    <div
+      className={cn(
+        "flex items-center message-item",
+        message.role === "user" ? "flex-row-reverse" : "flex-row"
+      )}
+    >
+      {message.role === "user" ? (
+        <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
+          <Image src="/images/user.png" alt="User" width={32} height={32} />
+        </div>
+      ) : (
+        <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
+          <Image src="/images/me.png" alt="AI" width={32} height={32} />
+        </div>
+      )}
+      <div
+        className={cn(
+          "flex flex-col gap-1 p-4 rounded-lg flex-1",
+          message.role === "user"
+            ? "bg-blue-500/10 mr-8"
+            : "bg-gray-800/50 ml-8"
+        )}
+      >
+        <div className="text-gray-200">
+          <Markdown>{message.content}</Markdown>
+        </div>
+      </div>
+    </div>
+  );
+});
 
 interface ContactChatProps {
   placeholder?: string;
@@ -27,9 +65,9 @@ export function ContactChat({
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    if (chatContainerRef.current) {
-      chatContainerRef.current.scrollTop =
-        chatContainerRef.current.scrollHeight;
+    if (messagesEndRef.current) {
+      // Use scrollIntoView for better performance and smoother scrolling
+      messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -48,8 +86,7 @@ export function ContactChat({
 
   const { messages, input, handleInputChange, handleSubmit } = useChat({
     api: "/api/chat-google",
-    onFinish: async (message) => {
-      console.log("Message:", message);
+    onFinish: async () => {
       setIsButtonVisible(false);
       await playSound();
       setIsPlaying(false);
@@ -66,7 +103,10 @@ export function ContactChat({
 
   // Scroll to bottom when messages change
   useEffect(() => {
-    scrollToBottom();
+    // Use requestAnimationFrame to batch scroll operations and prevent layout thrashing
+    requestAnimationFrame(() => {
+      scrollToBottom();
+    });
   }, [messages]);
 
   return (
@@ -78,45 +118,7 @@ export function ContactChat({
         >
           <div className="flex flex-col gap-4">
             {messages.map((message, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "flex items-center",
-                  message.role === "user" ? "flex-row-reverse" : "flex-row"
-                )}
-              >
-                {message.role === "user" ? (
-                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
-                    <Image
-                      src="/images/user.png"
-                      alt="User"
-                      width={32}
-                      height={32}
-                    />
-                  </div>
-                ) : (
-                  <div className="w-8 h-8 rounded-full overflow-hidden flex-shrink-0 flex items-center justify-center">
-                    <Image
-                      src="/images/me.png"
-                      alt="AI"
-                      width={32}
-                      height={32}
-                    />
-                  </div>
-                )}
-                <div
-                  className={cn(
-                    "flex flex-col gap-1 p-4 rounded-lg flex-1",
-                    message.role === "user"
-                      ? "bg-blue-500/10 mr-8"
-                      : "bg-gray-800/50 ml-8"
-                  )}
-                >
-                  <div className="text-gray-200">
-                    <Markdown>{message.content}</Markdown>
-                  </div>
-                </div>
-              </div>
+              <MessageItem key={message.id || index} message={message} />
             ))}
             <div ref={messagesEndRef} />
           </div>
@@ -173,7 +175,7 @@ export function ContactChat({
           </div>
         </form>
       </div>
-      <audio ref={audioRef} src={bubbleSoundUrl} preload="auto"></audio>
+      <audio ref={audioRef} src={bubbleSoundUrl} preload="none"></audio>
     </div>
   );
 }

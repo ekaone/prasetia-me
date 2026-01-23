@@ -146,3 +146,9 @@
 .radio-canada {
   font-family: var(--font-radio-canada), sans-serif;
 }
+
+/* Performance optimization: content-visibility for long lists */
+.message-item {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 80px;
+}

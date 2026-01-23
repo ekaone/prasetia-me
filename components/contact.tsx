@@ -1,15 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import { ContactChat } from "@/components/contact-chat";
 
 export default function Contact() {
-  const [, setSubmittedValue] = useState<string | null>(null);
-
   const handleSubmit = (value: string) => {
-    setSubmittedValue(value);
-    console.log(value);
+    // Handle submission if needed in the future
+    // Currently just passed to ContactChat but not used
   };
 
   return (

@@ -5,10 +5,12 @@ import Scratch from "@/components/scratch";
 import { Metadata } from "next";
 import Blog from "@/components/blog";
 import Contact from "@/components/contact";
-import { Particles } from "@/components/magicui/particles";
+import { cache, Suspense } from "react";
+import { ParticlesWrapper } from "@/components/particles-wrapper";
 
 // Function to generate a creative title using AI
-async function generateAITitle() {
+// Cached per request to ensure consistent title within same request
+const generateAITitle = cache(async () => {
   // A simple array of creative titles
   // In a real implementation, can call an AI API here
   const creativeTitles = [
@@ -21,7 +23,7 @@ async function generateAITitle() {
 
   // Randomly select a title
   return creativeTitles[Math.floor(Math.random() * creativeTitles.length)];
-}
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const title = await generateAITitle();
@@ -56,9 +58,13 @@ export default function Home() {
       <Hero />
       <Stack />
       <Scratch />
-      <Blog />
-      <Contact />
-      <Particles
+      <Suspense fallback={<div className="w-full h-64 animate-pulse bg-white/5 rounded-2xl" />}>
+        <Blog />
+      </Suspense>
+      <Suspense fallback={<div className="w-full h-64 animate-pulse bg-white/5 rounded-2xl" />}>
+        <Contact />
+      </Suspense>
+      <ParticlesWrapper
         className="fixed inset-0 top-0 left-0 w-full h-full -z-[10] pointer-events-none"
         quantity={100}
         ease={80}
