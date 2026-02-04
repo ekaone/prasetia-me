@@ -54,7 +54,8 @@ A modern, interactive personal website built with Next.js 15, React 19, and Tail
 3. **Set up environment variables**
    ```bash
    # Create a .env.local file with:
-   OPENAI_API_KEY=your_api_key_here
+   OPENAI_API_KEY=your_api_key_here || GOOGLE_GENERATIVE_AI_API_KEY=your_google_api_key_here
+   HELICONE_API_KEY=your_helicone_api_key_here
    ```
 
 4. **Run the development server**
@@ -70,6 +71,9 @@ A modern, interactive personal website built with Next.js 15, React 19, and Tail
 ## 🔑 Environment Variables
 
 - `OPENAI_API_KEY`: Your OpenAI API key for the chat functionality
+- `Or`
+- `GOOGLE_GENERATIVE_AI_API_KEY`: Your Google Generative AI API key for the chat functionality
+- `HELICONE_API_KEY`: Your Helicone API key for the chat functionality
 
 ## 📦 Main Components
 
@@ -78,27 +82,6 @@ A modern, interactive personal website built with Next.js 15, React 19, and Tail
 - `Stack`: Technology stack showcase
 - `Blog`: Blog post display component
 - `RenderMarkdown`: Markdown rendering component
-
-## 🎨 UI Components
-
-The project uses a comprehensive set of UI components built with Radix UI primitives, including:
-
-- Accordion
-- Alert Dialog
-- Avatar
-- Button
-- Card
-- Dialog
-- Dropdown Menu
-- Form components
-- And many more...
-
-## 📱 Responsive Design
-
-The website is fully responsive and works seamlessly across:
-- Desktop
-- Tablet
-- Mobile devices
 
 ## 🤝 Contributing
 
