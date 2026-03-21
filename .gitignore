@@ -39,8 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-#Agents rules
-.cursor/skills/
-.agents/skills/
-

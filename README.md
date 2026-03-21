@@ -1,92 +1,36 @@
-# Prasetia.me - Personal Website
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-A modern, interactive personal website built with Next.js 15, React 19, and TailwindCSS. Features an AI-powered chat interface, beautiful UI components, and a responsive design.
+## Getting Started
 
-## 🚀 Features
+First, run the development server:
 
-- **Modern Stack**: Built with Next.js 15, React 19, and TypeScript
-- **Interactive Chat**: AI-powered chat interface using OpenAI integration
-- **Beautiful UI**: Custom components built with Radix UI and TailwindCSS
-- **Responsive Design**: Fully responsive layout that works on all devices
-- **Markdown Support**: Rich text rendering with react-markdown
-- **Animations**: Smooth animations and transitions
-
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 15
-- **Language**: TypeScript
-- **UI Library**: React 19
-- **Styling**: TailwindCSS
-- **Components**: Radix UI
-- **AI Integration**: OpenAI SDK
-- **State Management**: Zustand
-- **Form Handling**: React Hook Form
-- **Validation**: Zod
-- **Animations**: Motion
-
-## 🏗️ Project Structure
-
-```
-├── app/                  # Next.js app directory
-│   ├── api/             # API routes
-│   ├── layout.tsx       # Root layout
-│   └── page.tsx         # Home page
-├── components/          # React components
-│   ├── ui/             # UI components
-│   └── magicui/        # Custom UI effects
-├── lib/                 # Utility functions
-├── public/             # Static assets
-└── hooks/              # Custom React hooks
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## 🚦 Getting Started
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/ekaone/prasetia-me
-   ```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-2. **Install dependencies**
-   ```bash
-   pnpm install
-   ```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-3. **Set up environment variables**
-   ```bash
-   # Create a .env.local file with:
-   OPENAI_API_KEY=your_api_key_here || GOOGLE_GENERATIVE_AI_API_KEY=your_google_api_key_here
-   HELICONE_API_KEY=your_helicone_api_key_here
-   ```
+## Learn More
 
-4. **Run the development server**
-   ```bash
-   pnpm dev
-   ```
+To learn more about Next.js, take a look at the following resources:
 
-5. **Build for production**
-   ```bash
-   pnpm build
-   ```
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## 🔑 Environment Variables
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-- `OPENAI_API_KEY`: Your OpenAI API key for the chat functionality
-- `Or`
-- `GOOGLE_GENERATIVE_AI_API_KEY`: Your Google Generative AI API key for the chat functionality
-- `HELICONE_API_KEY`: Your Helicone API key for the chat functionality
+## Deploy on Vercel
 
-## 📦 Main Components
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-- `ContactChat`: Interactive chat interface with AI integration
-- `Hero`: Main hero section with animations
-- `Stack`: Technology stack showcase
-- `Blog`: Blog post display component
-- `RenderMarkdown`: Markdown rendering component
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
