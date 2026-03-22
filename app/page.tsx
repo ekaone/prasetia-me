@@ -18,7 +18,7 @@ export default function Home() {
           <p className="text-gray-500 text-sm leading-relaxed">
             OSS Builder. Building tools.
             <br />
-            Focused on Primitive, Security, Privacy, LLMs, lightweight, and
+            Focused on Security, Privacy, LLMs, Primitive, lightweight, and
             zero-dependency TypeScript libraries.
           </p>
         </div>
