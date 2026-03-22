@@ -1,46 +1,9 @@
 import Link from "next/link";
-import { XformerlyTwitter } from "./components/icons/x";
-import { GitHub } from "./components/icons/github";
-import { Gmail } from "./components/icons/mail";
+
+import { projects } from "./data/project";
+import { links } from "./data/link";
 
 export default function Home() {
-  const projects = [
-    {
-      title: "DevFlow",
-      description:
-        "CLI tool for automating development workflows and CI/CD pipelines",
-      active: true,
-      stack: ["TypeScript", "Node.js", "Docker", "GitHub Actions"],
-      url: "https://github.com/alexchen/devflow",
-    },
-    {
-      title: "Synthwave UI",
-      description:
-        "A component library for building retro-futuristic interfaces",
-      active: false,
-      stack: ["React", "TypeScript", "Tailwind CSS", "Storybook"],
-      url: "https://github.com/alexchen/synthwave-ui",
-    },
-    {
-      title: "Pulse API",
-      description:
-        "Real-time health monitoring service for distributed systems",
-      active: false,
-      stack: ["Go", "gRPC", "Redis", "AWS"],
-      url: "https://github.com/alexchen/pulse-api",
-    },
-  ];
-
-  const links = [
-    { icon: Gmail, label: "Email", href: "mailto:ekaone3033@gmail.com" },
-    { icon: GitHub, label: "GitHub", href: "https://github.com/ekaone" },
-    {
-      icon: XformerlyTwitter,
-      label: "X",
-      href: "https://x.com/ekaone3033",
-    },
-  ];
-
   return (
     <div className="min-h-screen bg-background text-foreground font-mono">
       <div className="max-w-xl mx-auto px-6 py-24">
@@ -53,9 +16,10 @@ export default function Home() {
             Eka Prasetia
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed">
-            OSS Builder. Building tools for developers.
+            OSS Builder. Building tools.
             <br />
-            Focused on DX, LLMs, and open source.
+            Focused on Primitive, Security, Privacy, LLMs, lightweight, and
+            zero-dependency TypeScript libraries.
           </p>
         </div>
 
@@ -81,7 +45,7 @@ export default function Home() {
                   >
                     {project.title}
                   </a>
-                  <p className="text-xs text-muted-foreground mt-0.5">
+                  <p className="text-xs text-gray-500 mt-0.5">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5 mt-2">
