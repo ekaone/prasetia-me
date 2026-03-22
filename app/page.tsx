@@ -41,7 +41,7 @@ export default function Home() {
                     href={project.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm font-medium hover:text-accent transition-colors inline-flex items-center gap-1"
+                    className="text-sm font-medium hover:text-green-400 transition-colors inline-flex items-center gap-1"
                   >
                     {project.title}
                   </a>
