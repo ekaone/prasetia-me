@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eka Prasetia",
-  description: "Personal website of Eka Prasetia",
+  title: "Eka",
+  description: "OSS Builder",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

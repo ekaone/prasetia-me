@@ -8,8 +8,8 @@ const projects = [
       "1,000 files ~30ms",
       "6,000 files ~150ms",
       "20,000 files ~500ms",
-      "LLM generation (1 agent) ~35–40s",
-      "LLM generation (3 agents) ~90–120s",
+      "LLM generation (1 agent) ~35-40s",
+      "LLM generation (3 agents) ~90-120s",
       "--no-ai mode ~200ms total",
     ],
     url: "https://github.com/ekaone/repo-intel",
@@ -31,7 +31,7 @@ const projects = [
   {
     title: "Masking Token",
     description:
-      "Token masking library, uses for masking API keys, secrets, and tokens. Follow NIST SP 800-122, PCI-DSS, and OWASP A02 compliant. Entropy-Safe: Fixed-length masking prevents length-based attacks. Auto-detects 43+ token types (NPM, GitHub, Stripe, AWS, etc.)",
+      "Token masking library, for masking API keys, secrets, and tokens. Follow NIST SP 800-122, PCI-DSS, and OWASP A02 compliant. Entropy-Safe: Fixed-length masking prevents length-based attacks. Auto-detects 43+ token types (NPM, GitHub, Stripe, AWS, etc.)",
     active: false,
     stack: [
       "fixedLength",
@@ -45,6 +45,24 @@ const projects = [
     url: "https://github.com/ekaone/shielded",
   },
   {
+    title: "LLM Gate",
+    description:
+      "Problem space: AI agents can silently burn through your API credits if they enter infinite loops or receive malicious prompts designed to trigger excessive token consumption. LLM Gate wraps every LLM call with a stateful circuit breaker that tracks token usage, cost, and request frequency, then trips before the damage is done.",
+    active: false,
+    stack: [
+      "maxTokens",
+      "maxBudget",
+      "maxRequests",
+      "windowMs",
+      "throttleAt",
+      "pricing",
+      "onThrottled",
+      "onTripped",
+      "onReset",
+    ],
+    url: "https://github.com/ekaone/llm-gate",
+  },
+  {
     title: "Masking Email",
     description:
       "A small utility for safely displaying email addresses by masking sensitive parts. Offers flexible control, custom mask character, domain and sub-domain masking",
@@ -52,7 +70,6 @@ const projects = [
     stack: ["maskChar", "visibleChars", "maskDomain", "viewable"],
     url: "https://github.com/ekaone/mask-email",
   },
-
   {
     title: "Masking Card",
     description:

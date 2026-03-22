@@ -1,10 +1,8 @@
 ## Personal Website
 
-## Below are my curated projects and links
+## Below are my curated tools and links
 
+- [Masking Token](https://github.com/ekaone/shielded)
+- [Masking Email](https://github.com/ekaone/mask-email)
+- [LLM Gate](https://github.com/ekaone/llm-gate)
 
-## Links
-
-- [GitHub](https://github.com/ekaone)
-- [X](https://x.com/ekaone3033)
-- [Email](mailto:ekaone3033@gmail.com)
