@@ -2,6 +2,11 @@
   "name": "prasetia-me",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Eka Prasetia",
+    "email": "ekaone3033@gmail.com",
+    "url": "https://prasetia.me"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
