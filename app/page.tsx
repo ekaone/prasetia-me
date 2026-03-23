@@ -1,77 +1,90 @@
-import Hero from "@/components/hero";
-import Stack from "@/components/stack";
-import Scratch from "@/components/scratch";
-// import SolarSystem from "@/components/solar-system";
-import { Metadata } from "next";
-import Blog from "@/components/blog";
-import Contact from "@/components/contact";
-import { cache, Suspense } from "react";
-import { ParticlesWrapper } from "@/components/particles-wrapper";
+import Link from "next/link";
 
-// Function to generate a creative title using AI
-// Cached per request to ensure consistent title within same request
-const generateAITitle = cache(async () => {
-  // A simple array of creative titles
-  // In a real implementation, can call an AI API here
-  const creativeTitles = [
-    "Digital Explorer",
-    "Code & Creativity",
-    "Building Digital Dreams",
-    "Where Code Meets Art",
-    "Digital Innovation Hub",
-  ];
-
-  // Randomly select a title
-  return creativeTitles[Math.floor(Math.random() * creativeTitles.length)];
-});
-
-export async function generateMetadata(): Promise<Metadata> {
-  const title = await generateAITitle();
-
-  return {
-    title,
-    description: "Personal website",
-    openGraph: {
-      title,
-      description: "Personal website",
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: "Personal website",
-      images: ["/og-image.png"],
-    },
-  };
-}
+import { projects } from "./data/project";
+import { links } from "./data/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center mt-8 max-w-3xl mx-auto">
-      <Hero />
-      <Stack />
-      <Scratch />
-      <Suspense fallback={<div className="w-full h-64 animate-pulse bg-white/5 rounded-2xl" />}>
-        <Blog />
-      </Suspense>
-      <Suspense fallback={<div className="w-full h-64 animate-pulse bg-white/5 rounded-2xl" />}>
-        <Contact />
-      </Suspense>
-      <ParticlesWrapper
-        className="fixed inset-0 top-0 left-0 w-full h-full -z-[10] pointer-events-none"
-        quantity={100}
-        ease={80}
-        color="#ffffff"
-        refresh
-      />
-      {/* <SolarSystem /> */}
+    <div className="min-h-screen bg-background text-foreground font-mono">
+      <div className="max-w-xl mx-auto px-6 py-24">
+        {/* Header */}
+        <div className="mb-16">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="text-xs text-emerald-500">Available for work</span>
+          </div>
+          <h1 className="text-2xl text-gray-300 font-semibold tracking-tight mb-2">
+            Eka Prasetia
+          </h1>
+          <p className="text-gray-500 text-sm leading-relaxed">
+            OSS Builder. Building tools.
+            <br />
+            Focused on Security, Privacy, LLMs, Primitive, lightweight, and
+            zero-dependency TypeScript libraries.
+          </p>
+        </div>
+
+        {/* Projects */}
+        <div className="mb-16">
+          <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
+            Shipping
+          </h2>
+          <ul className="space-y-4">
+            {projects.map((project) => (
+              <li key={project.title} className="group flex items-start gap-3">
+                <span
+                  className={`project-status-dot ${
+                    project.active ? "bg-green-400" : "bg-amber-300"
+                  }`}
+                />
+                <div>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm font-medium hover:text-green-400 transition-colors inline-flex items-center gap-1"
+                  >
+                    {project.title}
+                  </a>
+                  <p className="text-xs text-gray-500 mt-0.5">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mt-2">
+                    {project.stack.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Links */}
+        <div>
+          <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
+            Links
+          </h2>
+          <div className="flex gap-6">
+            {links.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                aria-label={link.label}
+              >
+                <link.icon className="w-4 h-4" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

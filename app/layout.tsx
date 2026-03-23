@@ -1,11 +1,7 @@
-import { Analytics } from "@vercel/analytics/next";
-import {
-  Geist,
-  Geist_Mono,
-  Radio_Canada,
-  Radio_Canada_Big,
-} from "next/font/google";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -16,15 +12,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const radioCanadaBig = Radio_Canada_Big({
-  variable: "--font-radio-canada-big",
-  subsets: ["latin"],
-});
-
-const radioCanada = Radio_Canada({
-  variable: "--font-radio-canada",
-  subsets: ["latin"],
-});
+export const metadata: Metadata = {
+  title: "Eka",
+  description: "OSS Builder",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 
 export default function RootLayout({
   children,
@@ -32,13 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${radioCanadaBig.variable} ${radioCanada.variable} antialiased min-h-screen p-4`}
-      >
-        {children}
-        <Analytics />
-      </body>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }
