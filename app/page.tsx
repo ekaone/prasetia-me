@@ -16,10 +16,8 @@ export default function Home() {
             Eka Prasetia
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed">
-            OSS Builder. Building tools.
-            <br />
-            Focused on Security, LLMs, Primitive, Lightweight, and
-            zero-dependency TypeScript libraries.
+            OSS Builder.
+            <br />I build tiny tools, solve real issues.
           </p>
         </div>
 
