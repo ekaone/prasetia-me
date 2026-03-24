@@ -2,7 +2,7 @@ const projects = [
   {
     title: "Repository Intelligence",
     description:
-      "A blazing-fast CLI tool powered by a Rust core that scans your codebase, detects your tech stack, and generates rich AI agent SKILL docs, so tools like Claude Code, Cursor, and GitHub Copilot actually understand your project.",
+      "A blazing-fast CLI tool powered by a Rust core that scans your codebase, detects your tech stack, and generates rich AI agent SKILL docs, so tools like Claude Code, Cursor, and GitHub Copilot actually understand your project",
     active: true,
     stack: [
       "1,000 files ~30ms",
@@ -13,6 +13,24 @@ const projects = [
       "--no-ai mode ~200ms total",
     ],
     url: "https://github.com/ekaone/repo-intel",
+  },
+  {
+    title: "Hamming",
+    description:
+      "Hamming distance utilities and LSH binary projection for TypeScript. Useful for Semantic caching for AI applications, Near-duplicate detection, with Performance XOR + popcount (extremely fast) vs Float vector math (pgvector)",
+    active: true,
+    stack: [
+      "hammingString",
+      "hammingStringNorm",
+      "hammingBits",
+      "hammingBigInt",
+      "hammingBuffer",
+      "hammingBufferNorm",
+      "generatePlanes",
+      "toBinaryCode",
+      "binaryDistance",
+    ],
+    url: "https://github.com/ekaone/hamming",
   },
   {
     title: "Shielded",
