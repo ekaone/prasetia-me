@@ -18,7 +18,7 @@ export default function Home() {
           <p className="text-gray-500 text-sm leading-relaxed">
             OSS Builder. Building tools.
             <br />
-            Focused on Security, Privacy, LLMs, Primitive, Lightweight, and
+            Focused on Security, LLMs, Primitive, Lightweight, and
             zero-dependency TypeScript libraries.
           </p>
         </div>
@@ -58,6 +58,25 @@ export default function Home() {
                       </span>
                     ))}
                   </div>
+                  {project.badges && (
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {project.badges.map((badge, index) => (
+                        <a
+                          key={index}
+                          href={badge.linkUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-block"
+                        >
+                          <img
+                            src={badge.imageUrl}
+                            alt={badge.alt}
+                            className="h-4"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </li>
             ))}

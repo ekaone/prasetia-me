@@ -1,4 +1,19 @@
-const projects = [
+interface Badge {
+  imageUrl: string;
+  linkUrl: string;
+  alt: string;
+}
+
+interface Project {
+  title: string;
+  description: string;
+  active: boolean;
+  stack: string[];
+  badges?: Badge[];
+  url: string;
+}
+
+const projects: Project[] = [
   {
     title: "Repository Intelligence",
     description:
@@ -11,6 +26,28 @@ const projects = [
       "LLM generation (1 agent) ~35-40s",
       "LLM generation (3 agents) ~90-120s",
       "--no-ai mode ~200ms total",
+    ],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/repo-intel.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/repo-intel",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/Rust-1.94+-orange.svg",
+        linkUrl: "https://www.rust-lang.org/",
+        alt: "Rust",
+      },
     ],
     url: "https://github.com/ekaone/repo-intel",
   },
@@ -30,6 +67,23 @@ const projects = [
       "toBinaryCode",
       "binaryDistance",
     ],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/hamming.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/hamming",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/hamming",
   },
   {
@@ -43,6 +97,23 @@ const projects = [
       "sealed",
       "withTTL",
       "isSealedValue",
+    ],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/shielded.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/shielded",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
     ],
     url: "https://github.com/ekaone/shielded",
   },
@@ -60,7 +131,24 @@ const projects = [
       "validators",
       "onWarning",
     ],
-    url: "https://github.com/ekaone/shielded",
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/mask-token.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/mask-token",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
+    url: "https://github.com/ekaone/masking-token",
   },
   {
     title: "LLM Gate",
@@ -78,6 +166,23 @@ const projects = [
       "onTripped",
       "onReset",
     ],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/llm-gate.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/llm-gate",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/llm-gate",
   },
   {
@@ -86,6 +191,23 @@ const projects = [
       "A small utility for safely displaying email addresses by masking sensitive parts. Offers flexible control, custom mask character, domain and sub-domain masking",
     active: false,
     stack: ["maskChar", "visibleChars", "maskDomain", "viewable"],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/mask-email.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/mask-email",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/mask-email",
   },
   {
@@ -102,6 +224,23 @@ const projects = [
       "showLength",
       "validateInput",
     ],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/mask-card.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/mask-card",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/mask-card",
   },
   {
@@ -110,6 +249,23 @@ const projects = [
       "Measures randomness density, best used for generated tokens, secrets, and API keys. Not intended for judging human-chosen passwords",
     active: false,
     stack: ["numeric", "alpha", "hex", "alphanumeric", "mixed"],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/entropy.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/entropy",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/entropy",
   },
   {
@@ -118,6 +274,23 @@ const projects = [
       "OTP utility built on Node's crypto, designed for code generation, includes batch generation, custom charset, verify option an OTP using constant-time comparison to prevent timing attacks",
     active: false,
     stack: ["generate", "verify", "batch", "batchUnique"],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/nano-otp.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/nano-otp",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/nano-otp",
   },
   {
@@ -134,6 +307,23 @@ const projects = [
       "preserveFormat",
       "customMask",
     ],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/mask-phone.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/mask-phone",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/mask-phone",
   },
   {
@@ -142,6 +332,23 @@ const projects = [
       "TypeScript rounding library for financial use cases. Handles half-up, banker's rounding, cash rounding, and ISO 4217 currency precision with float-safe logic and null-safe APIs",
     active: false,
     stack: ["rounded", "rounded.cash", "rounded.currency"],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/rounded.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/rounded",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/rounded",
   },
   {
@@ -150,6 +357,23 @@ const projects = [
       "A utility to mask personal names for privacy protection. Supports Latin, Chinese, and Japanese scripts with fully customizable options",
     active: false,
     stack: ["char", "visibleStart", "visibleEnd", "locale", "preserveSpacing"],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/mask-name.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/mask-name",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
     url: "https://github.com/ekaone/mask-name",
   },
 ];
