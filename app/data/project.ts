@@ -15,10 +15,38 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "JSON-CLI",
+    description:
+      "AI-powered CLI task runner. Describe your goal in plain English — AI generates a validated JSON command plan — runner executes it step by step.",
+    active: true,
+    stack: [
+      "json-cli 'please run tests'",
+      "json-cli 'run tests and then build'",
+    ],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/json-cli.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/json-cli",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
+    url: "https://github.com/ekaone/json-cli",
+  },
+  {
     title: "Repository Intelligence",
     description:
       "A blazing-fast CLI tool powered by a Rust core that scans your codebase, detects your tech stack, and generates rich AI agent SKILL docs, so tools like Claude Code, Cursor, and GitHub Copilot actually understand your project",
-    active: true,
+    active: false,
     stack: [
       "1,000 files ~30ms",
       "6,000 files ~150ms",
@@ -55,7 +83,7 @@ const projects: Project[] = [
     title: "Hamming",
     description:
       "Hamming distance utilities and LSH binary projection for TypeScript. Useful for Semantic caching for AI applications, Near-duplicate detection, with Performance XOR + popcount (extremely fast) vs Float vector math (pgvector)",
-    active: true,
+    active: false,
     stack: [
       "hammingString",
       "hammingStringNorm",
