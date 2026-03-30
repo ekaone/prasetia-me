@@ -1,6 +1,6 @@
 ## Personal Website
 
-## Below are my curated tools and links
+## Below are my curated DevTools
 
 - [Masking Token](https://github.com/ekaone/shielded)
 - [Masking Email](https://github.com/ekaone/mask-email)

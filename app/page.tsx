@@ -1,9 +1,22 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 
 import { projects } from "./data/project";
 import { links } from "./data/link";
+import { Filter } from "./components/icons/filter";
 
 export default function Home() {
+  const [filter, setFilter] = useState<"all" | "active" | "postpone">("all");
+
+  const filteredProjects = projects.filter((project) => {
+    if (filter === "all") return true;
+    if (filter === "active") return project.active;
+    if (filter === "postpone") return !project.active;
+    return true;
+  });
+
   return (
     <div className="min-h-screen bg-background text-foreground font-mono">
       <div className="max-w-xl mx-auto px-6 py-24">
@@ -17,17 +30,37 @@ export default function Home() {
           </h1>
           <p className="text-gray-500 text-sm leading-relaxed">
             OSS Builder.
-            <br />I build tiny tools, solve real issues.
+            <br />I build tiny DevTools.
           </p>
         </div>
 
         {/* Projects */}
         <div className="mb-16">
-          <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
-            Shipping
-          </h2>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-xs uppercase tracking-widest text-muted-foreground">
+              Shipping
+            </h2>
+            <div className="flex items-center gap-2">
+              <Filter className="w-3 h-3 text-muted-foreground" />
+              <select
+                value={filter}
+                onChange={(e) =>
+                  setFilter(e.target.value as "all" | "active" | "postpone")
+                }
+                className="bg-background text-xs border-none text-muted-foreground focus:outline-none focus:text-foreground cursor-pointer"
+              >
+                <option value="all">All ({projects.length})</option>
+                <option value="active">
+                  Active ({projects.filter((p) => p.active).length})
+                </option>
+                <option value="postpone">
+                  Postpone ({projects.filter((p) => !p.active).length})
+                </option>
+              </select>
+            </div>
+          </div>
           <ul className="space-y-4">
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <li key={project.title} className="group flex items-start gap-3">
                 <span
                   className={`project-status-dot ${

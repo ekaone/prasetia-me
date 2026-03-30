@@ -83,7 +83,7 @@ const projects: Project[] = [
     title: "Hamming",
     description:
       "Hamming distance utilities and LSH binary projection for TypeScript. Useful for Semantic caching for AI applications, Near-duplicate detection, with Performance XOR + popcount (extremely fast) vs Float vector math (pgvector)",
-    active: false,
+    active: true,
     stack: [
       "hammingString",
       "hammingStringNorm",
@@ -118,7 +118,7 @@ const projects: Project[] = [
     title: "Shielded",
     description:
       "A small primitive for protecting sensitive state (tokens, PII) at the runtime level. Uses sealed values to eliminate accidental leaks across logs, error tracking, and SSR",
-    active: false,
+    active: true,
     stack: [
       "createStore",
       "store.subscribe",
@@ -149,7 +149,7 @@ const projects: Project[] = [
     title: "Masking Token",
     description:
       "Token masking library, for masking API keys, secrets, and tokens. Follow NIST SP 800-122, PCI-DSS, and OWASP A02 compliant. Entropy-Safe: Fixed-length masking prevents length-based attacks. Auto-detects 43+ token types (NPM, GitHub, Stripe, AWS, etc.)",
-    active: false,
+    active: true,
     stack: [
       "fixedLength",
       "showTail",
@@ -182,7 +182,7 @@ const projects: Project[] = [
     title: "LLM Gate",
     description:
       "Problem space: AI agents can silently burn through your API credits if they enter infinite loops or receive malicious prompts designed to trigger excessive token consumption. LLM Gate wraps every LLM call with a stateful circuit breaker that tracks token usage, cost, and request frequency, then trips before the damage is done.",
-    active: false,
+    active: true,
     stack: [
       "maxTokens",
       "maxBudget",
@@ -217,7 +217,7 @@ const projects: Project[] = [
     title: "Masking Email",
     description:
       "A small utility for safely displaying email addresses by masking sensitive parts. Offers flexible control, custom mask character, domain and sub-domain masking",
-    active: false,
+    active: true,
     stack: ["maskChar", "visibleChars", "maskDomain", "viewable"],
     badges: [
       {
@@ -242,7 +242,7 @@ const projects: Project[] = [
     title: "Masking Card",
     description:
       "TypeScript utility for masking credit card numbers, handles formatting, partial visibility, supports flexible masking rules, grouping, and formatting",
-    active: false,
+    active: true,
     stack: [
       "maskChar",
       "unmaskedStart",
@@ -275,7 +275,7 @@ const projects: Project[] = [
     title: "Entropy",
     description:
       "Measures randomness density, best used for generated tokens, secrets, and API keys. Not intended for judging human-chosen passwords",
-    active: false,
+    active: true,
     stack: ["numeric", "alpha", "hex", "alphanumeric", "mixed"],
     badges: [
       {
@@ -300,7 +300,7 @@ const projects: Project[] = [
     title: "Nano OTP (One-Time Password)",
     description:
       "OTP utility built on Node's crypto, designed for code generation, includes batch generation, custom charset, verify option an OTP using constant-time comparison to prevent timing attacks",
-    active: false,
+    active: true,
     stack: ["generate", "verify", "batch", "batchUnique"],
     badges: [
       {
@@ -325,7 +325,7 @@ const projects: Project[] = [
     title: "Masking Phone",
     description:
       "A utility to mask phone numbers for privacy protection. Follows GDPR and data protection standards, extensive customization options: Character used for masking, Number of digits to show at the beginning/end, Alias for showFirst/showLast",
-    active: false,
+    active: true,
     stack: [
       "maskChar",
       "showFirst",
@@ -358,7 +358,7 @@ const projects: Project[] = [
     title: "Rounded",
     description:
       "TypeScript rounding library for financial use cases. Handles half-up, banker's rounding, cash rounding, and ISO 4217 currency precision with float-safe logic and null-safe APIs",
-    active: false,
+    active: true,
     stack: ["rounded", "rounded.cash", "rounded.currency"],
     badges: [
       {
@@ -383,7 +383,7 @@ const projects: Project[] = [
     title: "Masking Name",
     description:
       "A utility to mask personal names for privacy protection. Supports Latin, Chinese, and Japanese scripts with fully customizable options",
-    active: false,
+    active: true,
     stack: ["char", "visibleStart", "visibleEnd", "locale", "preserveSpacing"],
     badges: [
       {
