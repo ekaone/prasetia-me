@@ -17,7 +17,7 @@ const projects: Project[] = [
   {
     title: "JSON-CLI",
     description:
-      "AI-powered CLI task runner. Describe your goal in plain English — AI generates a validated JSON command plan — runner executes it step by step.",
+      "AI-powered CLI task runner. Describe your goal in plain English, AI generates a validated JSON command plan, and the runner executes it step by step.",
     active: true,
     stack: [
       "json-cli 'please run tests'",
