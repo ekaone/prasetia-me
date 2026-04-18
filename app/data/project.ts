@@ -176,7 +176,7 @@ const projects: Project[] = [
         alt: "TypeScript",
       },
     ],
-    url: "https://github.com/ekaone/masking-token",
+    url: "https://github.com/ekaone/mask-token",
   },
   {
     title: "LLM Gate",
