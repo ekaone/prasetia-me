@@ -6,6 +6,7 @@ import Link from "next/link";
 import { projects } from "./data/project";
 import { links } from "./data/link";
 import { Filter } from "./components/icons/filter";
+import { ProjectCard } from "./components/project-card";
 
 export default function Home() {
   const [filter, setFilter] = useState<"all" | "active" | "postpone">("all");
@@ -18,118 +19,68 @@ export default function Home() {
   });
 
   return (
-    <div className="min-h-screen bg-background text-foreground font-mono">
-      <div className="max-w-xl mx-auto px-6 py-24">
-        {/* Header */}
-        <div className="mb-16">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-xs text-emerald-500">Available for work</span>
-          </div>
-          <h1 className="text-2xl text-gray-300 font-semibold tracking-tight mb-2">
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
+        <div className="mb-12 md:mb-14">
+          <span className="inline-flex items-center rounded-full border border-emerald-600/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-wider text-emerald-400">
+            Available for work
+          </span>
+          <h1 className="mt-5 text-4xl font-black tracking-tight text-zinc-100 md:text-5xl">
             Eka Prasetia
           </h1>
-          <p className="text-gray-500 text-sm leading-relaxed">
-            OSS Builder.
-            <br />I build tiny DevTools.
+          <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-400 md:text-base">
+            OSS Builder. I build DevTools, stay lightweight, and zero
+            dependency.
           </p>
         </div>
 
-        {/* Projects */}
-        <div className="mb-16">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xs uppercase tracking-widest text-muted-foreground">
-              Shipping
-            </h2>
-            <div className="flex items-center gap-2">
-              <Filter className="w-3 h-3 text-muted-foreground" />
-              <select
-                value={filter}
-                onChange={(e) =>
-                  setFilter(e.target.value as "all" | "active" | "postpone")
-                }
-                className="bg-background text-xs border-none text-muted-foreground focus:outline-none focus:text-foreground cursor-pointer"
-              >
-                <option value="all">All ({projects.length})</option>
-                <option value="active">
-                  Active ({projects.filter((p) => p.active).length})
-                </option>
-                <option value="postpone">
-                  Postpone ({projects.filter((p) => !p.active).length})
-                </option>
-              </select>
-            </div>
+        <div className="mb-8 flex flex-col gap-4 bg-zinc-950/70 p-4 shadow-[0_14px_50px_rgba(0,0,0,0.35)] backdrop-blur md:flex-row md:items-center md:justify-between">
+          <h2 className="text-lg uppercase tracking-[0.3em] text-zinc-500">
+            Shipping
+          </h2>
+          <div className="flex items-center gap-2">
+            <Filter className="h-3.5 w-3.5 text-zinc-500" />
+            <select
+              value={filter}
+              onChange={(e) =>
+                setFilter(e.target.value as "all" | "active" | "postpone")
+              }
+              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs font-medium text-zinc-200 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
+            >
+              <option value="all">All ({projects.length})</option>
+              <option value="active">
+                Active ({projects.filter((p) => p.active).length})
+              </option>
+              <option value="postpone">
+                Postpone ({projects.filter((p) => !p.active).length})
+              </option>
+            </select>
           </div>
-          <ul className="space-y-4">
-            {filteredProjects.map((project) => (
-              <li key={project.title} className="group flex items-start gap-3">
-                <span
-                  className={`project-status-dot ${
-                    project.active ? "bg-green-400" : "bg-amber-300"
-                  }`}
-                />
-                <div>
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm font-medium hover:text-green-400 transition-colors inline-flex items-center gap-1"
-                  >
-                    {project.title}
-                  </a>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-1.5 mt-2">
-                    {project.stack.map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[10px] px-1.5 py-0.5 rounded bg-gray-800 text-gray-300"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  {project.badges && (
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {project.badges.map((badge, index) => (
-                        <a
-                          key={index}
-                          href={badge.linkUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block"
-                        >
-                          <img
-                            src={badge.imageUrl}
-                            alt={badge.alt}
-                            className="h-4"
-                          />
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
         </div>
 
-        {/* Links */}
-        <div>
-          <h2 className="text-xs uppercase tracking-widest text-muted-foreground mb-6">
+        <ul className="mb-16 grid grid-cols-1 gap-5 md:grid-cols-2">
+          {filteredProjects.map((project) => (
+            <li key={project.title} className="h-full">
+              <ProjectCard project={project} />
+            </li>
+          ))}
+        </ul>
+
+        <div className="bg-zinc-950/70 p-4 shadow-[0_14px_45px_rgba(0,0,0,0.35)] backdrop-blur">
+          <h2 className="mb-4 text-xs uppercase tracking-[0.3em] text-zinc-500">
             Links
           </h2>
-          <div className="flex gap-6">
+          <div className="flex gap-3">
             {links.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="rounded-xl border border-zinc-700 bg-zinc-900 p-2.5 text-zinc-300 transition hover:-translate-y-0.5 hover:border-emerald-500 hover:text-emerald-400"
                 aria-label={link.label}
               >
-                <link.icon className="w-4 h-4" />
+                <link.icon className="h-4 w-4" />
               </Link>
             ))}
           </div>
