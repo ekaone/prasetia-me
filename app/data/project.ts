@@ -17,7 +17,7 @@ const projects: Project[] = [
   {
     title: "JSON-CLI",
     description:
-      "AI-powered CLI task runner. Describe your goal in plain English, AI generates a validated JSON command plan, and the runner executes it step by step.",
+      "AI-powered CLI task runner. Describe your goal in plain English, AI generates a validated JSON command plan, and the runner executes it step by step",
     active: true,
     stack: [
       "json-cli 'please run tests'",
@@ -66,6 +66,31 @@ const projects: Project[] = [
       },
     ],
     url: "https://github.com/ekaone/killx",
+  },
+  {
+    title: "Agent Surf",
+    description:
+      "AI-powered browser automation CLI. Write in plain English, AI generates a validated agent-browser command plan, and the runner executes it step by step",
+    active: true,
+    stack: ["cli", "agent", "browser"],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/agent-surf.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/agent-surf",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
+    url: "https://github.com/ekaone/agent-surf",
   },
   {
     title: "Repository Intelligence",
