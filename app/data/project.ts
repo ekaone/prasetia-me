@@ -43,6 +43,31 @@ const projects: Project[] = [
     url: "https://github.com/ekaone/json-cli",
   },
   {
+    title: "Kill-X",
+    description:
+      "It specializes in recursively killing processes and their entire child trees using an intelligent signal strategy that escalates from SIGTERM to SIGKILL for guaranteed termination",
+    active: true,
+    stack: ["cli", "trre", "process"],
+    badges: [
+      {
+        imageUrl: "https://img.shields.io/npm/v/@ekaone/killx.svg",
+        linkUrl: "https://www.npmjs.com/package/@ekaone/killx",
+        alt: "npm version",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/License-MIT-yellow.svg",
+        linkUrl: "https://opensource.org/licenses/MIT",
+        alt: "License: MIT",
+      },
+      {
+        imageUrl: "https://img.shields.io/badge/TypeScript-5.0+-blue.svg",
+        linkUrl: "https://www.typescriptlang.org/",
+        alt: "TypeScript",
+      },
+    ],
+    url: "https://github.com/ekaone/killx",
+  },
+  {
     title: "Repository Intelligence",
     description:
       "A blazing-fast CLI tool powered by a Rust core that scans your codebase, detects your tech stack, and generates rich AI agent SKILL docs, so tools like Claude Code, Cursor, and GitHub Copilot actually understand your project",
