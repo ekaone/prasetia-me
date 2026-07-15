@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Eka",
-  description: "OSS Builder",
+  title: "Eka Prasetia - npm Devtool Catalog",
+  description: "Static catalog of Eka Prasetia's npm packages and OSS devtools.",
   icons: {
     icon: "/favicon.ico",
   },

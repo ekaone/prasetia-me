@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 type Badge = {
   imageUrl: string;
   linkUrl: string;
@@ -74,11 +76,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 rel="noopener noreferrer"
                 className="inline-flex rounded-sm bg-zinc-900/80 ring-1 ring-zinc-700"
               >
-                <img
+                <Image
                   src={badge.imageUrl}
                   alt={badge.alt}
-                  className="h-5"
-                  loading="lazy"
+                  width={96}
+                  height={20}
+                  className="h-5 w-auto"
                 />
               </a>
             ))}

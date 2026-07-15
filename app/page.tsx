@@ -1,91 +1,127 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 
-import { projects } from "./data/project";
+import { PackageExplorer } from "./components/package-explorer";
+import { categories, packages } from "./data/project";
 import { links } from "./data/link";
-import { Filter } from "./components/icons/filter";
-import { ProjectCard } from "./components/project-card";
+
+const featuredPackages = packages.filter((project) => project.featured).slice(0, 4);
+const activeCount = packages.filter((project) => project.status === "active").length;
+const categoryCount = categories.length;
 
 export default function Home() {
-  const [filter, setFilter] = useState<"all" | "active" | "postpone">("all");
-
-  const filteredProjects = projects.filter((project) => {
-    if (filter === "all") return true;
-    if (filter === "active") return project.active;
-    if (filter === "postpone") return !project.active;
-    return true;
-  });
-
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-        <div className="mb-12 md:mb-14">
-          <span className="inline-flex items-center rounded-full border border-emerald-600/30 bg-emerald-500/10 px-3 py-1 text-xs font-semibold tracking-wider text-emerald-400">
-            Available for work
-          </span>
-          <h1 className="mt-5 text-4xl font-black tracking-tight text-zinc-100 md:text-5xl">
-            Eka Prasetia
-          </h1>
-          <p className="mt-3 max-w-xl text-sm leading-relaxed text-zinc-400 md:text-base">
-            OSS Builder. I build DevTools, stay lightweight, and zero
-            dependency.
-          </p>
-        </div>
+    <main className="min-h-screen bg-background text-foreground">
+      <section className="border-b border-white/10 bg-[linear-gradient(180deg,rgba(9,9,11,0.96),rgba(9,9,11,0.72))]">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 sm:px-6 md:py-14 lg:grid-cols-[minmax(0,1fr)_360px] lg:px-8">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="rounded-md border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-1 text-xs font-bold text-emerald-200">
+                Available for work
+              </span>
+              <span className="font-mono text-xs text-zinc-500">
+                npm catalog / zero-dependency bias / OSS devtools
+              </span>
+            </div>
 
-        <div className="mb-8 flex flex-col gap-4 bg-zinc-950/70 p-4 shadow-[0_14px_50px_rgba(0,0,0,0.35)] backdrop-blur md:flex-row md:items-center md:justify-between">
-          <h2 className="text-lg uppercase tracking-[0.3em] text-zinc-500">
-            Shipping
-          </h2>
-          <div className="flex items-center gap-2">
-            <Filter className="h-3.5 w-3.5 text-zinc-500" />
-            <select
-              value={filter}
-              onChange={(e) =>
-                setFilter(e.target.value as "all" | "active" | "postpone")
-              }
-              className="rounded-lg border border-zinc-700 bg-zinc-900 px-3 py-1.5 text-xs font-medium text-zinc-200 outline-none transition focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
-            >
-              <option value="all">All ({projects.length})</option>
-              <option value="active">
-                Active ({projects.filter((p) => p.active).length})
-              </option>
-              <option value="postpone">
-                Postpone ({projects.filter((p) => !p.active).length})
-              </option>
-            </select>
+            <h1 className="mt-6 max-w-4xl text-5xl font-black tracking-tight text-zinc-50 sm:text-6xl lg:text-7xl">
+              Eka Prasetia
+            </h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-zinc-400 md:text-lg">
+              I build small, sharp npm packages for agents, privacy, CLIs, and
+              TypeScript utility work. This catalog is tuned for scanning,
+              filtering, and grabbing the package you came for.
+            </p>
+
+            <div className="mt-8 grid max-w-2xl grid-cols-3 gap-3">
+              <Metric label="Packages" value={packages.length.toString()} />
+              <Metric label="Active" value={activeCount.toString()} />
+              <Metric label="Categories" value={categoryCount.toString()} />
+            </div>
           </div>
+
+          <aside className="self-end rounded-lg border border-white/10 bg-zinc-950/75 p-4">
+            <h2 className="text-sm font-bold text-zinc-100">Find me</h2>
+            <div className="mt-4 grid grid-cols-5 gap-2">
+              {links.map((link) => (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex h-11 items-center justify-center rounded-md border border-white/10 bg-white/[0.03] text-zinc-300 transition hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
+                  aria-label={link.label}
+                >
+                  <link.icon className="h-4 w-4" />
+                </Link>
+              ))}
+            </div>
+            <p className="mt-4 text-sm leading-6 text-zinc-500">
+              Most packages here are deliberately narrow: one job, typed APIs,
+              easy installs, and no decorative dependency pile.
+            </p>
+          </aside>
         </div>
+      </section>
 
-        <ul className="mb-16 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {filteredProjects.map((project) => (
-            <li key={project.title} className="h-full">
-              <ProjectCard project={project} />
-            </li>
-          ))}
-        </ul>
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <section aria-labelledby="featured-heading" className="mb-8">
+          <div className="mb-4 flex items-end justify-between gap-4">
+            <div>
+              <h2
+                id="featured-heading"
+                className="text-lg font-black tracking-tight text-zinc-100"
+              >
+                Featured packages
+              </h2>
+              <p className="mt-1 text-sm text-zinc-500">
+                The packages I would show first in a quick OSS tour.
+              </p>
+            </div>
+            <span className="hidden font-mono text-xs text-zinc-600 sm:block">
+              curated:{featuredPackages.length}
+            </span>
+          </div>
 
-        <div className="bg-zinc-950/70 p-4 shadow-[0_14px_45px_rgba(0,0,0,0.35)] backdrop-blur">
-          <h2 className="mb-4 text-xs uppercase tracking-[0.3em] text-zinc-500">
-            Links
-          </h2>
-          <div className="flex gap-3">
-            {links.map((link) => (
-              <Link
-                key={link.label}
-                href={link.href}
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            {featuredPackages.map((project) => (
+              <a
+                key={project.packageName}
+                href={project.npmUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl border border-zinc-700 bg-zinc-900 p-2.5 text-zinc-300 transition hover:-translate-y-0.5 hover:border-emerald-500 hover:text-emerald-400"
-                aria-label={link.label}
+                className="group rounded-lg border border-white/10 bg-zinc-950/65 p-4 transition hover:border-cyan-300/35 hover:bg-zinc-950 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
               >
-                <link.icon className="h-4 w-4" />
-              </Link>
+                <div className="flex items-center justify-between gap-3">
+                  <span className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1 text-xs font-bold text-zinc-400">
+                    {project.category}
+                  </span>
+                  <span className="font-mono text-xs text-cyan-200">npm</span>
+                </div>
+                <h3 className="mt-4 text-base font-black text-zinc-100">
+                  {project.title}
+                </h3>
+                <p className="mt-2 line-clamp-3 text-sm leading-6 text-zinc-500">
+                  {project.description}
+                </p>
+                <code className="mt-4 block truncate font-mono text-xs text-zinc-300">
+                  {project.installCommand}
+                </code>
+              </a>
             ))}
           </div>
-        </div>
+        </section>
+
+        <PackageExplorer packages={packages} categories={categories} />
       </div>
+    </main>
+  );
+}
+
+function Metric({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg border border-white/10 bg-zinc-950/65 p-4">
+      <div className="font-mono text-2xl font-black text-zinc-100">{value}</div>
+      <div className="mt-1 text-xs font-semibold text-zinc-500">{label}</div>
     </div>
   );
 }
