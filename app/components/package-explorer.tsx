@@ -1,5 +1,6 @@
 "use client";
 
+import { Check, Copy } from "lucide-react";
 import { useMemo, useState } from "react";
 
 import type {
@@ -263,10 +264,18 @@ export function PackageExplorer({
 }
 
 function PackageRow({ project }: { project: PackageProject }) {
+  const [copied, setCopied] = useState(false);
+
   const statusClass =
     project.status === "active"
       ? "border-emerald-300/30 bg-emerald-300/10 text-emerald-200"
       : "border-amber-300/30 bg-amber-300/10 text-amber-200";
+
+  const copyInstallCommand = async () => {
+    await navigator.clipboard.writeText(project.installCommand);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 1600);
+  };
 
   return (
     <article className="group rounded-lg border border-white/10 bg-zinc-950/70 p-4 transition hover:border-cyan-300/35 hover:bg-zinc-950">
@@ -308,7 +317,19 @@ function PackageRow({ project }: { project: PackageProject }) {
             <span className="text-xs font-semibold text-zinc-500">
               Install
             </span>
-            <span className="text-xs font-semibold text-zinc-600">npm</span>
+            <button
+              type="button"
+              onClick={copyInstallCommand}
+              className="inline-flex h-8 w-8 items-center justify-center rounded-md border border-white/10 bg-white/[0.03] text-zinc-500 transition hover:border-cyan-300/40 hover:bg-cyan-300/10 hover:text-cyan-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300/70"
+              aria-label={`Copy npm install command for ${project.packageName}`}
+              title={copied ? "Copied" : "Copy npm command"}
+            >
+              {copied ? (
+                <Check className="h-4 w-4" aria-hidden="true" />
+              ) : (
+                <Copy className="h-4 w-4" aria-hidden="true" />
+              )}
+            </button>
           </div>
           <code className="mt-2 block break-all font-mono text-sm leading-6 text-zinc-100">
             {project.installCommand}
